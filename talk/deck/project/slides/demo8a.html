@@ -1,0 +1,20 @@
+<section id="demo8a" data-transition="fade" style="background:#1c2530;color:#faf7f1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ffaa28">Demo · Task 8</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">A monitoring dashboard for the running server</h2>
+<div style="display:flex;flex-direction:row;gap:40px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<img src="../assets/dash-compare.png" alt="Dashboard panel: HuggingFace vs vLLM single-request throughput, 67.1 versus 87.9 tokens per second" style="width:1180px;height:302px;object-fit:contain;border:1px solid #2a3642;border-radius:12px;background:#0d1117">
+<img src="../assets/dash-load.png" alt="Dashboard panel: throughput by concurrent users, rising from 97.8 to 392.4 tokens per second" style="width:1180px;height:305px;object-fit:contain;border:1px solid #2a3642;border-radius:12px;background:#0d1117">
+</div>
+<div style="width:440px;display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;background:#121a22;border:1px solid #2a3642;border-radius:12px;padding:16px 24px;color:#ffaa28">python task_8_dashboard.py</p>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6">A Gradio app on port 7860 that reads the results every task wrote and polls the live server.</p>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6;border-left:4px solid #ffaa28;padding:4px 0 4px 20px"><b>Top panel:</b> the same model served two ways. The gap is the engine, not the weights.</p>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6;border-left:4px solid #ffaa28;padding:4px 0 4px 20px"><b>Bottom panel:</b> continuous batching at work. Throughput climbs as users arrive.</p>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6;border-left:4px solid #ffaa28;padding:4px 0 4px 20px"><b>Live row:</b> a refresh button sends a real request and reports tokens per second and latency now.</p>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">18</p>
+</section>

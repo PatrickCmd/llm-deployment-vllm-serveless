@@ -1,0 +1,35 @@
+<section id="demo4" data-transition="fade" style="background:#1c2530;color:#faf7f1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ffaa28">Demo · Task 4</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">The same five requests, in 16-token pages</h2>
+<div style="display:flex;flex-direction:row;gap:48px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;background:#121a22;border:1px solid #2a3642;border-radius:12px;padding:20px 28px;color:#ffaa28">python task_4_paged_attention.py</p>
+<table style="font-size:28px;color:#e8edf2;border:1px solid #2a3642;border-radius:12px">
+<tr style="background:#121a22"><th style="width:28%;text-align:left;color:#ffaa28">Method</th><th style="width:24%;text-align:right;color:#ffaa28">Allocated</th><th style="width:24%;text-align:right;color:#ffaa28">Used</th><th style="width:24%;text-align:right;color:#ffaa28">Utilization</th></tr>
+<tr><td style="text-align:left">Contiguous</td><td style="text-align:right">2,560 slots</td><td style="text-align:right">519 slots</td><td style="text-align:right">20.3%</td></tr>
+<tr><td style="text-align:left">Paged</td><td style="text-align:right">544 slots</td><td style="text-align:right">519 slots</td><td style="text-align:right;color:#ffaa28">95.4%</td></tr>
+</table>
+<div style="background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:10px;font-family:'JetBrains Mono', 'Courier New', monospace">
+<p style="font-size:26px;color:#e8edf2">Request 1: 45 tokens  → 3 pages  (48 slots)   waste 6.2%</p>
+<p style="font-size:26px;color:#e8edf2">Request 2: 128 tokens → 8 pages  (128 slots)  waste 0.0%</p>
+<p style="font-size:26px;color:#e8edf2">Request 3: 23 tokens  → 2 pages  (32 slots)   waste 28.1%</p>
+<p style="font-size:26px;color:#e8edf2">Request 4: 256 tokens → 16 pages (256 slots)  waste 0.0%</p>
+<p style="font-size:26px;color:#e8edf2">Request 5: 67 tokens  → 5 pages  (80 slots)   waste 16.2%</p>
+</div>
+<p style="font-size:26px;color:#8a93a0">The only waste left is the tail of each request's last page.</p>
+</div>
+<div style="width:560px;display:flex;flex-direction:column;gap:32px">
+<div style="background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:36px 40px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:140px;font-weight:700;line-height:1;color:#ffaa28">4.7x</p>
+<p style="font-size:28px;color:#c4ccd6">less memory for the same work</p>
+</div>
+<div style="background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:36px 40px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:700;line-height:1.1"><span style="color:#8a93a0">19</span> → <span style="color:#ffaa28">92</span> users</p>
+<p style="font-size:28px;color:#c4ccd6">from the same 10,000 slots, with utilization up from 20% to 95%</p>
+</div>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">12</p>
+</section>

@@ -85,6 +85,11 @@ with each configuration and leaves the last one running. Stop it with the PID in
 The tasks are adapted from a vLLM lab exercise. The lines marked `TODO` in the comments are the
 blanks a learner fills in; this copy has them completed so the demos run as-is.
 
+## Slides
+
+The talk deck is in [`talk/`](talk/): the live, presentable version is linked from its README, and the
+slide source (one HTML file per slide plus the images) is committed alongside it.
+
 ## What is in the repository
 
 ```
@@ -93,6 +98,7 @@ task_1 ... task_8           the eight demos, in talk order
 patches/                    vLLM CPU fallback fix for Apple Silicon builds
 logos/                      PyCon Africa 2026 and Sunbird AI logos used in the slides
 slides/                     reference decks, notes and a recorded explainer used while preparing the talk
+talk/                       the PyCon Africa 2026 deck: link to the live version plus slide source and images
 markers/                    created at runtime; results, baselines, server PID and log (git-ignored)
 vllm_source/                created by you if you build vLLM from source (git-ignored)
 ```

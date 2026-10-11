@@ -1,0 +1,51 @@
+<section id="problem" data-transition="fade" style="background:#faf7f1;color:#1c2530;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b4581a">The problem</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">The KV cache eats GPU memory</h2>
+<p style="font-size:32px;line-height:1.4;color:#4a5563;width:1400px">A naive engine reserves one contiguous block per request, sized for the longest possible answer. Most answers are short, so most of the reservation sits empty.</p>
+<div style="background:#fffdf9;border:1px solid #e6e1d6;border-radius:20px;padding:36px 40px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center">
+<p style="width:220px;font-size:26px;font-weight:600">Request A</p>
+<div style="flex:none;width:940px;height:56px;background:#ebe6dc;border-radius:10px;display:flex;flex-direction:row">
+<div style="flex:none;width:24px;height:56px;background:#dc7828;border-radius:10px"></div>
+</div>
+<p style="width:360px;font-size:26px;color:#4a5563">50 of 2,000 slots used</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center">
+<p style="width:220px;font-size:26px;font-weight:600">Request B</p>
+<div style="flex:none;width:940px;height:56px;background:#ebe6dc;border-radius:10px;display:flex;flex-direction:row">
+<div style="flex:none;width:282px;height:56px;background:#dc7828;border-radius:10px"></div>
+</div>
+<p style="width:360px;font-size:26px;color:#4a5563">600 of 2,000 slots used</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center">
+<p style="width:220px;font-size:26px;font-weight:600">Request C</p>
+<div style="flex:none;width:940px;height:56px;background:#ebe6dc;border-radius:10px;display:flex;flex-direction:row">
+<div style="flex:none;width:85px;height:56px;background:#dc7828;border-radius:10px"></div>
+</div>
+<p style="width:360px;font-size:26px;color:#4a5563">180 of 2,000 slots used</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center">
+<p style="width:220px;font-size:26px;font-weight:600;color:#8a93a0">Request D</p>
+<div style="flex:none;width:940px;height:56px;border:2px dashed #b9b2a4;border-radius:10px"></div>
+<p style="width:360px;font-size:26px;color:#b4581a">no room left, must wait</p>
+</div>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;border-top:4px solid #ffaa28;padding:20px 0 0 0">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:600">Over-reservation</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a5563">Memory reserved but never used, and unavailable to anyone else.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;border-top:4px solid #ffaa28;padding:20px 0 0 0">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:600">Fragmentation</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a5563">Free memory split into gaps too small and scattered to fit a new request.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;border-top:4px solid #ffaa28;padding:20px 0 0 0">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:600">The real bottleneck</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a5563">Memory management, not math speed, limits how many users a GPU serves.</p>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">9</p>
+</section>

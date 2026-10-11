@@ -1,0 +1,20 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-10-11T05:30:00Z"},
+  "lists": "css",
+  "title": "Deploying Custom LLMs with vLLM",
+  "order": ["cover", "sunbird", "roadmap", "serving", "kvcache", "demo1", "whatis", "demo2", "problem", "demo3", "paged", "demo4", "sharing", "demo5", "batching", "demo6", "demo7", "demo8a", "demo8b", "benefits", "part2", "thanks"],
+  "sections": {
+    "intro": {"description": "Who is speaking, what Sunbird AI builds, and how the two-part talk is split.", "start": "cover"},
+    "serving": {"description": "What LLM serving is, how prefill, decode and the KV cache work, and a plain HuggingFace baseline.", "start": "serving"},
+    "vllm": {"description": "What vLLM is, the KV cache memory problem, and how PagedAttention and block sharing fix it, each with a demo.", "start": "whatis"},
+    "production": {"description": "The OpenAI-compatible server, continuous batching under load, tuning, and the monitoring dashboard.", "start": "demo5"},
+    "close": {"description": "Why vLLM, the self-paced Part 2 on serverless deployment, and thanks.", "start": "benefits"}
+  },
+  "faces": {
+    "space-grotesk": {"family": "Space Grotesk", "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap"},
+    "ibm-plex-sans": {"family": "IBM Plex Sans", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": []
+}

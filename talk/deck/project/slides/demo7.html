@@ -1,0 +1,35 @@
+<section id="demo7" data-transition="fade" style="background:#1c2530;color:#faf7f1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ffaa28">Demo · Task 7</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">Tuning the knobs for your workload</h2>
+<div style="display:flex;flex-direction:row;gap:48px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;background:#121a22;border:1px solid #2a3642;border-radius:12px;padding:20px 28px;color:#ffaa28">python task_7_tuning.py</p>
+<p style="font-size:28px;line-height:1.4;color:#c4ccd6">Three server configurations, each benchmarked with 10 concurrent requests of 50 tokens.</p>
+<table style="font-size:28px;color:#e8edf2;border:1px solid #2a3642;border-radius:12px">
+<tr style="background:#121a22"><th style="width:34%;text-align:left;color:#ffaa28">Config</th><th style="width:22%;text-align:right;color:#ffaa28">max_model_len</th><th style="width:22%;text-align:right;color:#ffaa28">max_num_seqs</th><th style="width:22%;text-align:right;color:#ffaa28">Throughput</th></tr>
+<tr><td style="text-align:left">A: Default</td><td style="text-align:right">128</td><td style="text-align:right">256</td><td style="text-align:right">316.6 tok/s</td></tr>
+<tr><td style="text-align:left">B: Shorter context</td><td style="text-align:right">64</td><td style="text-align:right">256</td><td style="text-align:right;color:#ffaa28">323.9 tok/s</td></tr>
+<tr><td style="text-align:left">C: Limited concurrency</td><td style="text-align:right">64</td><td style="text-align:right">8</td><td style="text-align:right">279.9 tok/s</td></tr>
+</table>
+<p style="font-size:26px;color:#8a93a0">Config C has the lowest latency per request (1.38s) but the lowest total throughput. There is no single best setting.</p>
+</div>
+<div style="width:640px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#ffaa28">--max-model-len</p>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6">Longest context per request. Lower means less KV cache per user, so more users fit.</p>
+</div>
+<div style="background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#ffaa28">--max-num-seqs</p>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6">How many sequences run in one batch. Trades per-request latency for total throughput.</p>
+</div>
+<div style="background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#ffaa28">--gpu-memory-utilization</p>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6">Share of GPU memory vLLM may claim for weights plus KV cache blocks.</p>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#c4ccd6;border-left:4px solid #ffaa28;padding:4px 0 4px 24px">Measure with your own prompts and traffic shape before you pick.</p>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">17</p>
+</section>

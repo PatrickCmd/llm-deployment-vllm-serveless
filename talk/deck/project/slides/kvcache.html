@@ -1,0 +1,51 @@
+<section id="kvcache" data-transition="fade" style="background:#faf7f1;color:#1c2530;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b4581a">Foundations</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">Prefill, decode and the KV cache</h2>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;background:#fffdf9;border:1px solid #e6e1d6;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b4581a">Step 1</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;font-weight:600">Tokens</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a5563">The model splits text into tokens, roughly word pieces.</p>
+</div>
+<div style="flex:1;background:#fffdf9;border:1px solid #e6e1d6;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b4581a">Step 2</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;font-weight:600">Prefill</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a5563">Reads the whole prompt once before writing anything.</p>
+</div>
+<div style="flex:1;background:#fffdf9;border:1px solid #e6e1d6;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b4581a">Step 3</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;font-weight:600">Decode</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a5563">Writes the reply one token at a time, each step reading everything before it.</p>
+</div>
+</div>
+<div style="flex:1"></div>
+<div style="background:#1c2530;color:#faf7f1;border-radius:20px;padding:40px 48px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;font-weight:600">The KV cache</h3>
+<p style="font-size:26px;color:#c4ccd6">one entry per token, kept for the life of the request</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:12px;align-items:center">
+<div style="width:120px;height:72px;background:#ffaa28;border-radius:10px"></div>
+<div style="width:120px;height:72px;background:#ffaa28;border-radius:10px"></div>
+<div style="width:120px;height:72px;background:#ffaa28;border-radius:10px"></div>
+<div style="width:120px;height:72px;background:#ffaa28;border-radius:10px"></div>
+<div style="width:120px;height:72px;background:#ffaa28;border-radius:10px"></div>
+<div style="width:120px;height:72px;background:#dc7828;border-radius:10px"></div>
+<div style="width:120px;height:72px;background:#dc7828;border-radius:10px"></div>
+<div style="width:120px;height:72px;background:#dc7828;border-radius:10px"></div>
+<div style="width:120px;height:72px;border:2px dashed #6b7684;border-radius:10px"></div>
+<div style="width:120px;height:72px;border:2px dashed #6b7684;border-radius:10px"></div>
+<div style="width:120px;height:72px;border:2px dashed #6b7684;border-radius:10px"></div>
+<div style="width:120px;height:72px;border:2px dashed #6b7684;border-radius:10px"></div>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<p style="font-size:26px;color:#c4ccd6"><span style="color:#ffaa28">■</span> prompt tokens (prefill)</p>
+<p style="font-size:26px;color:#c4ccd6"><span style="color:#dc7828">■</span> generated tokens (decode)</p>
+<p style="font-size:26px;color:#c4ccd6">□ still to come, size unknown in advance</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.4;color:#4a5563;width:1500px">Without the cache every new token would recompute all the earlier work. With it, memory grows with every token of every active request.</p>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">5</p>
+</section>

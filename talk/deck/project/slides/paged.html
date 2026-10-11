@@ -1,0 +1,66 @@
+<section id="paged" data-transition="fade" style="background:#faf7f1;color:#1c2530;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b4581a">The core idea</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">PagedAttention: the KV cache in small blocks</h2>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:center">
+<div style="width:520px;background:#1c2530;color:#faf7f1;border-radius:20px;padding:36px 40px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ffaa28">Block table</p>
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center">
+<p style="font-size:30px;font-weight:600">Request A</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;color:#ffaa28">3 → 7 → 1 → 12</p>
+</div>
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center">
+<p style="font-size:30px;font-weight:600">Request B</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;color:#dc7828">0 → 5 → 18</p>
+</div>
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center">
+<p style="font-size:30px;font-weight:600">Request C</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;color:#c4ccd6">9 → 21</p>
+</div>
+<p style="font-size:26px;color:#c4ccd6;line-height:1.4">Each request's blocks in order. They need not be adjacent in memory.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b4581a">Physical blocks, 16 tokens each</p>
+<div style="display:grid;grid-template-columns:repeat(8, 1fr);gap:12px">
+<div style="aspect-ratio:1;background:#dc7828;border-radius:12px"></div>
+<div style="aspect-ratio:1;background:#ffaa28;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;background:#ffaa28;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;background:#dc7828;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;background:#ffaa28;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;background:#8a93a0;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;background:#ffaa28;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;background:#dc7828;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;background:#8a93a0;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+<div style="aspect-ratio:1;border:2px dashed #b9b2a4;border-radius:12px"></div>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<p style="font-size:26px;color:#4a5563"><span style="color:#ffaa28">■</span> Request A</p>
+<p style="font-size:26px;color:#4a5563"><span style="color:#dc7828">■</span> Request B</p>
+<p style="font-size:26px;color:#4a5563"><span style="color:#8a93a0">■</span> Request C</p>
+<p style="font-size:26px;color:#4a5563">□ free pool, any block fits any request</p>
+</div>
+</div>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<p style="flex:1;font-size:28px;line-height:1.4;border-top:4px solid #ffaa28;padding:20px 0 0 0"><b>Allocate on demand.</b> A request takes one more block only when it needs one.</p>
+<p style="flex:1;font-size:28px;line-height:1.4;border-top:4px solid #ffaa28;padding:20px 0 0 0"><b>Return on finish.</b> Freed blocks go straight back to the pool for the next request.</p>
+<p style="flex:1;font-size:28px;line-height:1.4;border-top:4px solid #ffaa28;padding:20px 0 0 0"><b>Borrowed from the OS.</b> Virtual memory paging, applied to attention.</p>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">11</p>
+</section>

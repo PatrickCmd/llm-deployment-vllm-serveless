@@ -1,0 +1,39 @@
+<section id="serving" data-transition="fade" style="background:#faf7f1;color:#1c2530;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b4581a">Foundations</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">What is LLM serving?</h2>
+<p style="font-size:32px;line-height:1.4;color:#4a5563;width:1300px">Running a model so that many people can send requests and get replies at the same time. A serving engine sits between the users and the GPU.</p>
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center">
+<div style="flex:1;background:#fffdf9;border:1px solid #e6e1d6;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:12px;align-items:center">
+<x-icon name="Users" style="width:56px;height:56px;color:#dc7828"></x-icon>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:600">Users</h3>
+<p style="font-size:26px;color:#4a5563;text-align:center">Many requests arrive at once</p>
+</div>
+<x-connector from="tl" head="end" style="width:72px;height:4px;color:#dc7828;border-width:4px"></x-connector>
+<div style="flex:1;background:#1c2530;color:#faf7f1;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:12px;align-items:center">
+<x-icon name="Settings" style="width:56px;height:56px;color:#ffaa28"></x-icon>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:600">Serving engine</h3>
+<p style="font-size:26px;color:#c4ccd6;text-align:center">Queues, batches and schedules the work</p>
+</div>
+<x-connector from="tl" head="end" style="width:72px;height:4px;color:#dc7828;border-width:4px"></x-connector>
+<div style="flex:1;background:#fffdf9;border:1px solid #e6e1d6;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:12px;align-items:center">
+<x-icon name="Database" style="width:56px;height:56px;color:#dc7828"></x-icon>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:600">GPU</h3>
+<p style="font-size:26px;color:#4a5563;text-align:center">Holds the model weights and the KV cache</p>
+</div>
+<x-connector from="tl" head="end" style="width:72px;height:4px;color:#dc7828;border-width:4px"></x-connector>
+<div style="flex:1;background:#fffdf9;border:1px solid #e6e1d6;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:12px;align-items:center">
+<x-icon name="Chat" style="width:56px;height:56px;color:#dc7828"></x-icon>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:600">Replies</h3>
+<p style="font-size:26px;color:#4a5563;text-align:center">Streamed back token by token</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<p style="flex:1;font-size:28px;line-height:1.4;color:#1c2530;border-top:4px solid #ffaa28;padding:20px 0 0 0"><b>GPUs are expensive.</b> Every hour of idle compute costs money.</p>
+<p style="flex:1;font-size:28px;line-height:1.4;color:#1c2530;border-top:4px solid #ffaa28;padding:20px 0 0 0"><b>GPU memory is limited.</b> Weights take most of it; requests share the rest.</p>
+<p style="flex:1;font-size:28px;line-height:1.4;color:#1c2530;border-top:4px solid #ffaa28;padding:20px 0 0 0"><b>Wasted memory means fewer users</b> served per GPU, at a higher cost each.</p>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">4</p>
+</section>

@@ -1,0 +1,43 @@
+<section id="benefits" data-transition="fade" style="background:#faf7f1;color:#1c2530;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b4581a">Recap</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">Why teams reach for vLLM</h2>
+<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:24px">
+<div style="background:#1c2530;color:#faf7f1;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<x-icon name="Lightning" style="width:48px;height:48px;color:#ffaa28"></x-icon>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:600">Higher throughput</h3>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6">4x more tokens per second at 20 users in our demo, far more on a real GPU.</p>
+</div>
+<div style="background:#1c2530;color:#faf7f1;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<x-icon name="Database" style="width:48px;height:48px;color:#ffaa28"></x-icon>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:600">Better GPU use</h3>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6">KV cache utilization from about 20% to about 95%. Memory and compute both stay busy.</p>
+</div>
+<div style="background:#1c2530;color:#faf7f1;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<x-icon name="Chart" style="width:48px;height:48px;color:#ffaa28"></x-icon>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:600">Lower cost per request</h3>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6">More users per GPU is fewer GPUs for the same traffic.</p>
+</div>
+<div style="background:#1c2530;color:#faf7f1;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<x-icon name="Link" style="width:48px;height:48px;color:#ffaa28"></x-icon>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:34px;font-weight:600">Drop-in API</h3>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6">OpenAI-compatible endpoints mean no application rewrite.</p>
+</div>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;background:#fffdf9;border:1px solid #e6e1d6;border-radius:20px;padding:32px 36px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b4581a">Where it shines</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:600">High-traffic chat and translation</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a5563">Continuous batching keeps slots full and PagedAttention fits many users' caches at once.</p>
+</div>
+<div style="flex:1;background:#fffdf9;border:1px solid #e6e1d6;border-radius:20px;padding:32px 36px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b4581a">Where it shines</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:36px;font-weight:600">Agent systems</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a5563">Long repeated instructions reuse shared prefix blocks. Many short steps batch together.</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.4;color:#4a5563;width:1500px">vLLM does not change the model's answers. It stops wasting memory and time.</p>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">20</p>
+</section>

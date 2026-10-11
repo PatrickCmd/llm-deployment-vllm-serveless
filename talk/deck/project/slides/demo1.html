@@ -1,0 +1,31 @@
+<section id="demo1" data-transition="fade" style="background:#1c2530;color:#faf7f1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ffaa28">Demo · Task 1</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">The baseline: plain HuggingFace inference</h2>
+<div style="display:flex;flex-direction:row;gap:48px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:30px;line-height:1.4;color:#c4ccd6">Load SmolLM-135M with transformers, generate 50 tokens, and time it. No batching, no scheduler: one request at a time.</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;background:#121a22;border:1px solid #2a3642;border-radius:12px;padding:20px 28px;color:#ffaa28">python task_1_hf_baseline.py</p>
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:140px;font-weight:700;line-height:1;color:#ffaa28">67.1</p>
+<p style="font-size:30px;color:#c4ccd6">tokens per second, serving exactly one user</p>
+</div>
+</div>
+<div style="width:880px;background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:36px 40px;display:flex;flex-direction:column;gap:14px;font-family:'JetBrains Mono', 'Courier New', monospace">
+<p style="font-size:26px;color:#ffaa28">$ python task_1_hf_baseline.py</p>
+<p style="font-size:26px;color:#8a93a0">Task 1: Naive HuggingFace Inference - The Baseline</p>
+<p style="font-size:26px;color:#e8edf2">Model: HuggingFaceTB/SmolLM-135M</p>
+<p style="font-size:26px;color:#e8edf2">Loading model with HuggingFace transformers...</p>
+<p style="font-size:26px;color:#e8edf2">Generating with HuggingFace transformers...</p>
+<p style="font-size:26px;color:#8a93a0">--- RESULTS ---</p>
+<p style="font-size:26px;color:#e8edf2">Generated tokens: 50</p>
+<p style="font-size:26px;color:#e8edf2">Total time: 0.74 seconds</p>
+<p style="font-size:26px;color:#ffaa28">Tokens per second: 67.1 tok/s</p>
+<p style="font-size:26px;color:#8a93a0">KEY INSIGHT: single-request performance.</p>
+<p style="font-size:26px;color:#8a93a0">Under load, requests would queue up.</p>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">6</p>
+</section>

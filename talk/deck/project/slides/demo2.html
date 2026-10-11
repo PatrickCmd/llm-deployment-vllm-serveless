@@ -1,0 +1,37 @@
+<section id="demo2" data-transition="fade" style="background:#1c2530;color:#faf7f1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ffaa28">Demo · Task 2</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">Same model, same prompt, served by vLLM</h2>
+<div style="display:flex;flex-direction:row;gap:48px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:30px;line-height:1.4;color:#c4ccd6">Swap the transformers loop for vLLM's engine. Nothing else changes: same weights, same 50 tokens, same CPU.</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;background:#121a22;border:1px solid #2a3642;border-radius:12px;padding:20px 28px;color:#ffaa28">python task_2_vllm_inference.py</p>
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:flex-end">
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:120px;font-weight:700;line-height:1;color:#8a93a0">67.1</p>
+<p style="font-size:28px;color:#c4ccd6">HuggingFace tok/s</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:120px;font-weight:700;line-height:1;color:#ffaa28">87.9</p>
+<p style="font-size:28px;color:#c4ccd6">vLLM tok/s, 1.3x faster</p>
+</div>
+</div>
+</div>
+<div style="width:880px;display:flex;flex-direction:column;gap:24px">
+<div style="background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:36px 40px;display:flex;flex-direction:column;gap:14px;font-family:'JetBrains Mono', 'Courier New', monospace">
+<p style="font-size:26px;color:#ffaa28">$ python task_2_vllm_inference.py</p>
+<p style="font-size:26px;color:#e8edf2">Initializing vLLM engine...</p>
+<p style="font-size:26px;color:#e8edf2">vLLM engine ready.</p>
+<p style="font-size:26px;color:#8a93a0">--- COMPARISON: HuggingFace vs vLLM ---</p>
+<p style="font-size:26px;color:#e8edf2">Metric          HuggingFace      vLLM</p>
+<p style="font-size:26px;color:#e8edf2">Tokens/sec             67.1      87.9</p>
+<p style="font-size:26px;color:#e8edf2">Total time            0.74s     0.57s</p>
+<p style="font-size:26px;color:#ffaa28">vLLM is 1.3x faster in tokens/sec</p>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#c4ccd6;border-left:4px solid #ffaa28;padding:4px 0 4px 24px">A modest win for one user. The real advantage shows up when many users arrive at once. First, why.</p>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">8</p>
+</section>
