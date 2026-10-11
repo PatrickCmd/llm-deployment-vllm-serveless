@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.log
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# uv
+uv.lock
+
+# Environment variables
+.env
+.env.*
+
+# Lab outputs (markers, baselines, benchmark results, server PID and logs)
+markers/
+
+# vLLM source checkout used for the CPU build
+vllm_source/
+
+# Model and tool caches
+.cache/
+huggingface/
+*.safetensors
+*.bin
+*.pt
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
