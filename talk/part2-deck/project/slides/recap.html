@@ -1,0 +1,31 @@
+<section id="recap" data-transition="fade" style="background:#faf7f1;color:#1c2530;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b8720a">Where we are</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">Part 1 ran on a laptop. Part 2 runs on a GPU you do not own.</h2>
+<div style="display:flex;flex-direction:row;gap:48px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#ffffff;border:1px solid #e3ddd0;border-radius:24px;padding:48px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#8a93a0">Part 1 · vLLM and how it works</p>
+<ul style="font-size:30px;line-height:1.6;color:#4a5568">
+<li>The KV cache is the bottleneck, not the math</li>
+<li>PagedAttention: 20% → 95% memory utilization</li>
+<li>Continuous batching: 4x throughput at 20 users</li>
+<li>An OpenAI-compatible server, one URL change</li>
+<li>Eight demos on a 135M model, CPU only</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#1c2530;color:#faf7f1;border-radius:24px;padding:48px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ffaa28">Part 2 · Serverless deployment</p>
+<ul style="font-size:30px;line-height:1.6;color:#c4ccd6">
+<li>Package a fine-tuned model for vLLM</li>
+<li>Serve it from a GPU endpoint that scales to zero</li>
+<li>Handle cold starts, cost and monitoring</li>
+<li>The same OpenAI client, pointed at RunPod</li>
+<li>Every step run live, numbers included</li>
+</ul>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.4;color:#4a5568;border-left:4px solid #ffaa28;padding:4px 0 4px 24px">The model: <b>Sunbird/Sunflower-Gemma4-E2B</b>, a 10 GB bf16 multimodal checkpoint fine-tuned for Ugandan languages. Text, images and audio in one request.</p>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#faf7f1;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · Part 2 · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">2</p>
+<aside>Quick bridge from Part 1. Everything on the left was CPU-only and local. The right column is what this deck covers, with the Sunflower Gemma 4 E2B model as the worked example.</aside>
+</section>

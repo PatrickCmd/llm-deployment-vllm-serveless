@@ -1,0 +1,39 @@
+<section id="monitoring" data-transition="fade" style="background:#faf7f1;color:#1c2530;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b8720a">Operating · Monitoring</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">Five signals, one health endpoint, one log line</h2>
+<div style="display:flex;flex-direction:row;gap:40px;flex:1">
+<div style="flex:1">
+<table style="font-size:24px;color:#1c2530;border:1px solid #e3ddd0;background:#ffffff">
+<tr style="background:#ece6d9"><th style="width:26%;text-align:left">Signal</th><th style="width:30%;text-align:left">Where</th><th style="width:44%;text-align:left">What good looks like</th></tr>
+<tr><td>Worker states</td><td>/health → workers; Workers tab</td><td>running while busy. throttled = GPU pool dry; unhealthy = crash loop</td></tr>
+<tr><td>Queue depth</td><td>/health → jobs.inQueue; Requests tab</td><td>Near zero. Growing while workers idle = broken image or pending model placement</td></tr>
+<tr><td>Delay and execution time</td><td>Requests tab, Metrics tab</td><td>Delay is the cold start; execution is prefill + decode</td></tr>
+<tr><td>Worker logs</td><td>Workers → Logs</td><td>revision=…, Loading weights took 2.28 s, KV cache size</td></tr>
+<tr><td>Spend and balance</td><td>Billing; runpodctl billing serverless</td><td>Matches the cost table; low-balance alert on</td></tr>
+</table>
+</div>
+<div style="width:640px;display:flex;flex-direction:column;gap:16px">
+<div style="background:#1c2530;color:#faf7f1;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:8px;font-family:'JetBrains Mono', 'Courier New', monospace">
+<p style="font-size:23px;color:#8a93a0">$ curl -H "Authorization: Bearer $KEY" \</p>
+<p style="font-size:23px;color:#8a93a0">&nbsp;&nbsp;&nbsp;&nbsp;api.runpod.ai/v2/$EP/health</p>
+<p style="font-size:23px;color:#e8edf2">{"jobs": {"completed": 0, "failed": 0,</p>
+<p style="font-size:23px;color:#ffaa28">&nbsp;&nbsp;"inProgress": 0, "inQueue": 1},</p>
+<p style="font-size:23px;color:#e8edf2">&nbsp;"workers": {"idle": 0, "initializing": 1,</p>
+<p style="font-size:23px;color:#e8edf2">&nbsp;&nbsp;"running": 0, "throttled": 0, "unhealthy": 0}}</p>
+</div>
+<div style="background:#1c2530;color:#faf7f1;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:8px;font-family:'JetBrains Mono', 'Courier New', monospace">
+<p style="font-size:23px;color:#8a93a0"># worker log, the lines that matter</p>
+<p style="font-size:23px;color:#e8edf2">image ready, initializing model files</p>
+<p style="font-size:23px;color:#e8edf2">model ready</p>
+<p style="font-size:23px;color:#ffaa28">Loading weights took 2.28 seconds</p>
+<p style="font-size:23px;color:#e8edf2">GPU KV cache size: 876,679 tokens</p>
+<p style="font-size:23px;color:#e8edf2">vLLM is healthy</p>
+</div>
+<p style="font-size:24px;line-height:1.4;color:#4a5568">Tokens per second and latency, Part 1's two numbers: the usage block of each response plus the Requests tab. The task 8 dashboard works unchanged against this endpoint.</p>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#faf7f1;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · Part 2 · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">14</p>
+<aside>Monitoring on a queue-based endpoint is mostly the health endpoint and the console tabs. One trap worth saying out loud: idle in /health also counts provisioned hosts whose container is stopped, so the Workers tab is where you see what is actually running and billing.</aside>
+</section>

@@ -1,0 +1,33 @@
+<section id="coldstart" data-transition="fade" style="background:#faf7f1;color:#1c2530;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b8720a">Operating · Cold starts</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">Nine minutes the first time, 2 min 23 s after that</h2>
+<div style="display:flex;flex-direction:row;gap:40px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;line-height:1.4;color:#4a5568">From the worker's own logs, first-ever start of this model on RunPod:</p>
+<table style="font-size:24px;color:#1c2530;border:1px solid #e3ddd0;background:#ffffff">
+<tr style="background:#ece6d9"><th style="width:58%;text-align:left">Phase</th><th style="width:22%;text-align:right">Duration</th><th style="width:20%;text-align:left">Billed</th></tr>
+<tr><td>Host downloads the 10 GB snapshot into the cache</td><td style="text-align:right">3 min 45 s</td><td>no</td></tr>
+<tr><td>Container start, vllm serve, Python imports</td><td style="text-align:right">1 min 43 s</td><td>yes</td></tr>
+<tr><td>Loading weights from local disk</td><td style="text-align:right">2.3 s</td><td>yes</td></tr>
+<tr><td>Engine init: profile, KV cache, multimodal warm-up</td><td style="text-align:right">40 s</td><td>yes</td></tr>
+<tr><td>Worker healthy, first job done</td><td style="text-align:right">7 s</td><td>yes</td></tr>
+<tr style="background:#ece6d9"><td>Billed start time ≈ $0.04</td><td style="text-align:right">2 min 20 s</td><td></td></tr>
+<tr><td>Second cold start, hosts already hold the weights</td><td style="text-align:right">2 min 23 s</td><td>yes</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.4;color:#4a5568">KV cache reported by the engine: 10.7 GiB = 876,679 tokens = <b>107 concurrent requests</b> at 8,192 tokens. Part 1's PagedAttention numbers on a real GPU.</p>
+</div>
+<div style="width:600px;display:flex;flex-direction:column;gap:14px">
+<h3 style="font-size:28px;font-weight:600">Levers, by impact</h3>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #ffaa28;padding:4px 0 4px 24px"><p style="font-size:24px;line-height:1.4;color:#1c2530"><b>Model cache.</b> Weights on local disk: 2 s instead of a multi-minute download every start.</p></div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #ffaa28;padding:4px 0 4px 24px"><p style="font-size:24px;line-height:1.4;color:#1c2530"><b>FlashBoot.</b> On by default; repeat starts on a recent host restore faster.</p></div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #ffaa28;padding:4px 0 4px 24px"><p style="font-size:24px;line-height:1.4;color:#1c2530"><b>Smaller or quantized model.</b> Load time is linear in bytes.</p></div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #ffaa28;padding:4px 0 4px 24px"><p style="font-size:24px;line-height:1.4;color:#1c2530"><b>ENFORCE_EAGER.</b> Skip CUDA-graph capture; flip off once throughput matters more.</p></div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #ffaa28;padding:4px 0 4px 24px"><p style="font-size:24px;line-height:1.4;color:#1c2530"><b>Idle timeout and active workers.</b> Warm time at $0.00031/s versus a cold start; min 1 removes cold starts for ≈ $800/month.</p></div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #ffaa28;padding:4px 0 4px 24px"><p style="font-size:24px;line-height:1.4;color:#1c2530"><b>Client side.</b> First call through /run, or retry on timeout; warm-up ping before a demo.</p></div>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#faf7f1;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · Part 2 · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">12</p>
+<aside>The key insight: the expensive part of a first-ever start is RunPod placing the model on hosts, and it is free. Once the hosts hold the snapshot, loading 10 GB takes two seconds; the billed two minutes are vLLM starting up. So the levers are about the engine, not the download.</aside>
+</section>

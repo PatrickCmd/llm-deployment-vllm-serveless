@@ -1,0 +1,41 @@
+<section id="account" data-transition="fade" style="background:#1c2530;color:#faf7f1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ffaa28">Steps 1 and 2 · Account and tooling</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">Ten dollars, one API key, one CLI</h2>
+<div style="display:flex;flex-direction:row;gap:48px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:row;gap:24px;align-items:start">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;color:#ffaa28;width:64px">1</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px"><h3 style="font-size:30px;font-weight:600">Sign up and add credits</h3><p style="font-size:26px;line-height:1.4;color:#c4ccd6">console.runpod.io → Billing. $10 covers this whole guide; credits are prepaid. Turn on low-balance alerts and Auto-pay before a live demo.</p></div>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:start">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;color:#ffaa28;width:64px">2</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px"><h3 style="font-size:30px;font-weight:600">Create an API key</h3><p style="font-size:26px;line-height:1.4;color:#c4ccd6">Settings → Credentials → API Keys. Choose <b>Restricted</b> with Serverless read/write. Shown once; this same key is what clients use as the OpenAI key.</p></div>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:start">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:700;color:#ffaa28;width:64px">3</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px"><h3 style="font-size:30px;font-weight:600">Hugging Face read token</h3><p style="font-size:26px;line-height:1.4;color:#c4ccd6">The Sunflower checkpoints are gated. Request access, then prove the token can read the repo before the workers try.</p></div>
+</div>
+</div>
+<div style="width:760px;display:flex;flex-direction:column;gap:16px">
+<div style="background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:8px;font-family:'JetBrains Mono', 'Courier New', monospace">
+<p style="font-size:24px;color:#8a93a0"># install, update, authenticate</p>
+<p style="font-size:24px;color:#e8edf2">curl -sSL https://cli.runpod.net | bash</p>
+<p style="font-size:24px;color:#e8edf2">runpodctl update &amp;&amp; runpodctl version</p>
+<p style="font-size:24px;color:#ffaa28">export RUNPOD_API_KEY=rpa_...</p>
+<p style="font-size:24px;color:#e8edf2">runpodctl doctor</p>
+</div>
+<div style="background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:8px;font-family:'JetBrains Mono', 'Courier New', monospace">
+<p style="font-size:24px;color:#8a93a0">{"checks": [</p>
+<p style="font-size:24px;color:#e8edf2">&nbsp;&nbsp;{"name": "api_key", "status": "pass"},</p>
+<p style="font-size:24px;color:#e8edf2">&nbsp;&nbsp;{"name": "api_connectivity", "status": "pass"},</p>
+<p style="font-size:24px;color:#e8edf2">&nbsp;&nbsp;{"name": "ssh_key", "status": "pass"}],</p>
+<p style="font-size:24px;color:#ffaa28">&nbsp;"healthy": true}</p>
+</div>
+<p style="font-size:24px;line-height:1.4;color:#8a93a0">runpodctl ≥ 2.4.0 is required for the model cache flag. Tested with 2.7.2; latest is 2.15.0.</p>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · Part 2 · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">5</p>
+<aside>Account setup is short. Emphasize two things: the RunPod key doubles as the OpenAI key for clients, and verifying the Hugging Face token up front avoids a misleading "Unable to access model" error later. The doctor output on the right is the real output from the test run.</aside>
+</section>

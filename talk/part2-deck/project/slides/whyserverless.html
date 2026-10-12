@@ -1,0 +1,26 @@
+<section id="whyserverless" data-transition="fade" style="background:#faf7f1;color:#1c2530;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b8720a">Why serverless GPUs</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">Pay for seconds of GPU, not for a GPU</h2>
+<div style="display:flex;flex-direction:row;gap:32px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;border:1px solid #e3ddd0;border-radius:24px;padding:40px">
+<h3 style="font-size:32px;font-weight:600">A rented GPU</h3>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;color:#1c2530">≈ $800</p>
+<p style="font-size:26px;line-height:1.4;color:#4a5568">per month for one RTX 4090 running 24/7, whether anyone calls it or not. Most African-language traffic is bursty: quiet nights, busy mornings.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#1c2530;color:#faf7f1;border-radius:24px;padding:40px">
+<h3 style="font-size:32px;font-weight:600">A serverless endpoint</h3>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;color:#ffaa28">≈ $0.04</p>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6">per cold start of this model, then $0.0006 per translation request. Workers appear when jobs queue and disappear after the idle timeout.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;border:1px solid #e3ddd0;border-radius:24px;padding:40px">
+<h3 style="font-size:32px;font-weight:600">The price you pay instead</h3>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;color:#1c2530">2 min 20 s</p>
+<p style="font-size:26px;line-height:1.4;color:#4a5568">cold start: the first request after idle waits for a worker to boot and vLLM to load the model. The rest of this talk is about making that acceptable.</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.4;color:#4a5568;border-left:4px solid #ffaa28;padding:4px 0 4px 24px">Serverless fits <b>request-response inference with idle periods</b>. Steady 24/7 traffic is cheaper on a reserved GPU; training and notebooks belong on a pod.</p>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#faf7f1;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · Part 2 · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">4</p>
+<aside>The economic argument. The numbers come from RunPod list prices on 2026-10-12 and from the measured cold start of this deployment. Be honest about the trade: cold starts are real and the later slides show how to manage them.</aside>
+</section>

@@ -1,0 +1,20 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-10-12T07:30:00Z"},
+  "lists": "css",
+  "title": "Deploying Custom LLMs with vLLM, Part 2",
+  "order": ["cover", "recap", "architecture", "whyserverless", "account", "model", "packaging", "template", "endpoint", "verify", "client", "coldstart", "cost", "monitoring", "platforms", "lessons", "resources", "thanks"],
+  "sections": {
+    "intro": {"description": "Where Part 1 left off and what Part 2 builds: a scale-to-zero vLLM endpoint for Sunflower-Gemma4-E2B.", "start": "cover"},
+    "setup": {"description": "RunPod account, API key, runpodctl, and the Hugging Face checkpoint we are packaging.", "start": "account"},
+    "deploy": {"description": "What packaging for vLLM means, the template, the endpoint, and the first verified request.", "start": "packaging"},
+    "operate": {"description": "Cold starts measured, what it costs, and what to monitor.", "start": "coldstart"},
+    "close": {"description": "Other serverless GPU platforms, lessons learned, resources and thanks.", "start": "platforms"}
+  },
+  "faces": {
+    "space-grotesk": {"family": "Space Grotesk", "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap"},
+    "ibm-plex-sans": {"family": "IBM Plex Sans", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap"},
+    "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": []
+}

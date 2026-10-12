@@ -1,0 +1,31 @@
+<section id="endpoint" data-transition="fade" style="background:#1c2530;color:#faf7f1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ffaa28">Step 5 · The endpoint</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">One command, scale to zero built in</h2>
+<div style="display:flex;flex-direction:row;gap:40px;flex:1">
+<div style="width:820px;background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:32px 36px;display:flex;flex-direction:column;gap:10px;font-family:'JetBrains Mono', 'Courier New', monospace">
+<p style="font-size:24px;color:#e8edf2">runpodctl serverless create \</p>
+<p style="font-size:24px;color:#e8edf2">&nbsp;&nbsp;--template-id 1py0k4aw3b --name sunflower-gemma-2b \</p>
+<p style="font-size:24px;color:#e8edf2">&nbsp;&nbsp;--gpu-id "NVIDIA GeForce RTX 4090" \</p>
+<p style="font-size:24px;color:#ffaa28">&nbsp;&nbsp;--workers-min 0 --workers-max 2 \</p>
+<p style="font-size:24px;color:#e8edf2">&nbsp;&nbsp;--idle-timeout 120 \</p>
+<p style="font-size:24px;color:#e8edf2">&nbsp;&nbsp;--scale-by delay --scale-threshold 300 \</p>
+<p style="font-size:24px;color:#e8edf2">&nbsp;&nbsp;--min-cuda-version 13.0 \</p>
+<p style="font-size:24px;color:#ffaa28">&nbsp;&nbsp;--model-reference \</p>
+<p style="font-size:24px;color:#ffaa28">&nbsp;&nbsp;&nbsp;&nbsp;https://huggingface.co/Sunbird/Sunflower-Gemma4-E2B:44e5d28f…</p>
+<p style="font-size:24px;color:#8a93a0">&nbsp;</p>
+<p style="font-size:24px;color:#8a93a0">→ ENDPOINT_ID oy9jxtbeq3c4ks · gpus ADA_24 · workers 0–2</p>
+<p style="font-size:24px;color:#8a93a0">&nbsp;&nbsp;scalerType QUEUE_DELAY · flashboot true · minCuda 13.0</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #ffaa28;padding:4px 0 4px 24px"><h3 style="font-size:28px;font-weight:600">workers-min 0</h3><p style="font-size:24px;line-height:1.4;color:#c4ccd6">Scale to zero. min 1 keeps one warm at ≈ $800/month.</p></div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #ffaa28;padding:4px 0 4px 24px"><h3 style="font-size:28px;font-weight:600">model-reference</h3><p style="font-size:24px;line-height:1.4;color:#c4ccd6">RunPod's host model cache: weights sit on local disk, download time unbilled, pinned to one commit.</p></div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #ffaa28;padding:4px 0 4px 24px"><h3 style="font-size:28px;font-weight:600">idle-timeout 120</h3><p style="font-size:24px;line-height:1.4;color:#c4ccd6">Two minutes warm after a request, so a demo burst pays one cold start. Default is 5 s.</p></div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #ffaa28;padding:4px 0 4px 24px"><h3 style="font-size:28px;font-weight:600">min-cuda-version 13.0</h3><p style="font-size:24px;line-height:1.4;color:#c4ccd6">The vLLM 0.30 image is CUDA 13. Without the floor, old-driver hosts crash-loop.</p></div>
+<div style="display:flex;flex-direction:column;gap:4px;border-left:4px solid #ffaa28;padding:4px 0 4px 24px"><h3 style="font-size:28px;font-weight:600">no data-centre pin, no volume</h3><p style="font-size:24px;line-height:1.4;color:#c4ccd6">A pinned volume starved GPU supply in July. The cache gives caching without the pin.</p></div>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · Part 2 · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">9</p>
+<aside>The command that creates the endpoint, with the flags that matter highlighted. The right column is the reasoning. The two most important are workers-min 0 for scale to zero and model-reference for the host cache. The console can do the same through Serverless, New Endpoint.</aside>
+</section>
