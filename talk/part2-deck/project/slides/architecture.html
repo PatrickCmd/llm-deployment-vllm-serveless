@@ -1,0 +1,39 @@
+<section id="architecture" data-transition="fade" style="background:#1c2530;color:#faf7f1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ffaa28">The target</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">What you will build</h2>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:center;flex:1">
+<div style="width:440px;display:flex;flex-direction:column;gap:16px;background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:36px">
+<h3 style="font-size:32px;font-weight:600">Your app</h3>
+<p style="font-size:26px;line-height:1.4;color:#c4ccd6">The standard OpenAI SDK, unchanged.</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.5;color:#ffaa28">base_url = api.runpod.ai/v2/&lt;ID&gt;/openai/v1<br>api_key = RUNPOD_API_KEY</p>
+</div>
+<x-shape kind="arrow-right" style="width:96px;height:48px;background:#ffaa28"></x-shape>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:36px">
+<h3 style="font-size:32px;font-weight:600">RunPod Serverless endpoint</h3>
+<ul style="font-size:26px;line-height:1.5;color:#c4ccd6">
+<li>Queue in front: /run, /status, /health, and /openai/v1</li>
+<li>Template: runpod/worker-v1-vllm (vLLM 0.30) + env vars</li>
+<li>Model cache: Sunflower-Gemma4-E2B pinned to one commit</li>
+<li>GPU: RTX 4090, 24 GB · workers 0 → 2 · idle timeout 120 s</li>
+</ul>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;background:#2a3642;border-radius:16px;padding:28px 36px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;color:#ffaa28">$0 / hour</p>
+<p style="font-size:26px;color:#c4ccd6">while idle: zero workers, nothing billed</p>
+</div>
+<div style="flex:1;background:#2a3642;border-radius:16px;padding:28px 36px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;color:#ffaa28">$1.10 / hour</p>
+<p style="font-size:26px;color:#c4ccd6">per RTX 4090 worker, billed per second while it runs</p>
+</div>
+<div style="flex:1;background:#2a3642;border-radius:16px;padding:28px 36px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;color:#ffaa28">under $1</p>
+<p style="font-size:26px;color:#c4ccd6">for this whole walkthrough, multimodal tests included</p>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · Part 2 · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">3</p>
+<aside>The architecture in one picture. The only things the client changes from Part 1's task 5 are the base URL and the key. RunPod puts a queue in front of the vLLM worker, which is what makes scale-to-zero survivable.</aside>
+</section>

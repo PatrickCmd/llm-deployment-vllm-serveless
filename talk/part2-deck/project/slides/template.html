@@ -1,0 +1,39 @@
+<section id="template" data-transition="fade" style="background:#faf7f1;color:#1c2530;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#b8720a">Step 4 · The template</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">The whole engine config is nine environment variables</h2>
+<div style="display:flex;flex-direction:row;gap:40px;flex:1">
+<div style="flex:1">
+<table style="font-size:24px;color:#1c2530;border:1px solid #e3ddd0;background:#ffffff">
+<tr style="background:#ece6d9"><th style="width:36%;text-align:left">Variable</th><th style="width:26%;text-align:left">Value</th><th style="width:38%;text-align:left">Why</th></tr>
+<tr><td>MODEL_NAME</td><td>Sunbird/Sunflower-Gemma4-E2B</td><td>The Hub repo</td></tr>
+<tr><td>HF_TOKEN</td><td>hf_…</td><td>Gated repo</td></tr>
+<tr><td>OPENAI_SERVED_MODEL_NAME_OVERRIDE</td><td>sunflower-gemma-2b</td><td>What clients pass as model=</td></tr>
+<tr><td>MAX_MODEL_LEN</td><td>8192</td><td>Context; less = more users fit</td></tr>
+<tr><td>GPU_MEMORY_UTILIZATION</td><td>0.90</td><td>VRAM share for weights + KV</td></tr>
+<tr><td>ENFORCE_EAGER</td><td>true</td><td>Skip CUDA graphs: faster boot</td></tr>
+<tr><td>RAW_OPENAI_OUTPUT</td><td>1</td><td>Pass vLLM's SSE through</td></tr>
+<tr><td>MODEL_LOADER_EXTRA_CONFIG</td><td>{"enable_weights_track": false}</td><td>Gemma 4 KV sharing</td></tr>
+<tr><td>MM_PROCESSOR_KWARGS</td><td>{"max_length": 480000, …}</td><td>Gemma 4 audio bug</td></tr>
+</table>
+</div>
+<div style="width:600px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#1c2530;color:#faf7f1;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:8px;font-family:'JetBrains Mono', 'Courier New', monospace">
+<p style="font-size:23px;color:#8a93a0"># creating one is free</p>
+<p style="font-size:23px;color:#e8edf2">runpodctl template create \</p>
+<p style="font-size:23px;color:#e8edf2">&nbsp;&nbsp;--name sunflower-gemma-2b-vllm --serverless \</p>
+<p style="font-size:23px;color:#ffaa28">&nbsp;&nbsp;--image runpod/worker-v1-vllm:v2.28.0 \</p>
+<p style="font-size:23px;color:#e8edf2">&nbsp;&nbsp;--container-disk-in-gb 40 \</p>
+<p style="font-size:23px;color:#e8edf2">&nbsp;&nbsp;--env "$ENV_JSON"</p>
+<p style="font-size:23px;color:#8a93a0">→ TEMPLATE_ID 1py0k4aw3b</p>
+</div>
+<div style="background:#ffffff;border:1px solid #e3ddd0;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:10px">
+<h3 style="font-size:28px;font-weight:600">Secret hygiene</h3>
+<p style="font-size:24px;line-height:1.4;color:#4a5568">Worker v2.28.0 prints the full vllm serve command, token included, in the start-up log. v2.29.0 masks it. Until it lands on Docker Hub, use a fine-grained HF token scoped to this one repo.</p>
+</div>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#faf7f1;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · Part 2 · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">8</p>
+<aside>A template is the container spec: image, disk, environment. The table is the complete engine configuration. Point out that the worker wrapper turns each uppercased variable into a vLLM flag, so there is no start command to write. Mention the secret hygiene note: it was observed live in the worker log.</aside>
+</section>

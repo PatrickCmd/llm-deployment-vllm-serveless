@@ -1,0 +1,36 @@
+<section id="cost" data-transition="fade" style="background:#1c2530;color:#faf7f1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ffaa28">Operating · Cost</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">Per second, rounded up, nothing while idle</h2>
+<div style="display:flex;flex-direction:row;gap:40px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:28px;font-weight:600;color:#c4ccd6">RunPod flex prices, 2026-10-12</h3>
+<table style="font-size:24px;color:#faf7f1;border:1px solid #2a3642;background:#121a22">
+<tr style="background:#2a3642"><th style="width:34%;text-align:left">GPU</th><th style="width:14%;text-align:right">VRAM</th><th style="width:16%;text-align:right">$/hour</th><th style="width:36%;text-align:left">Fits</th></tr>
+<tr><td>RTX 4090</td><td style="text-align:right">24 GB</td><td style="text-align:right">1.10</td><td>E2B bf16; 9B, 14B in FP8</td></tr>
+<tr><td>L4, A5000, 3090</td><td style="text-align:right">24 GB</td><td style="text-align:right">0.69</td><td>E2B bf16, no FP8</td></tr>
+<tr><td>L40S, 6000 Ada</td><td style="text-align:right">48 GB</td><td style="text-align:right">1.75</td><td>14B bf16</td></tr>
+<tr><td>A6000, A40</td><td style="text-align:right">48 GB</td><td style="text-align:right">1.22</td><td>14B bf16</td></tr>
+<tr><td>A100</td><td style="text-align:right">80 GB</td><td style="text-align:right">2.72</td><td>30B+</td></tr>
+<tr><td>H100</td><td style="text-align:right">80 GB</td><td style="text-align:right">4.79</td><td>30B+, fastest</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.4;color:#8a93a0">Storage: container disk ≈ $0.10/GB/month while a worker exists; network volume $0.07/GB/month. Image pull and cached-model download are not billed.</p>
+</div>
+<div style="width:700px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:28px;font-weight:600;color:#c4ccd6">This endpoint on an RTX 4090</h3>
+<table style="font-size:24px;color:#faf7f1;border:1px solid #2a3642;background:#121a22">
+<tr style="background:#2a3642"><th style="width:60%;text-align:left">Scenario</th><th style="width:40%;text-align:right">Cost</th></tr>
+<tr><td>One cold start, 2 min 20 s</td><td style="text-align:right">$0.04</td></tr>
+<tr><td>One warm translation request, 2 s</td><td style="text-align:right">$0.0006</td></tr>
+<tr><td>Up to 120 s idle timeout after it</td><td style="text-align:right">up to $0.04</td></tr>
+<tr><td>20-minute live demo, worker warm throughout</td><td style="text-align:right">$0.37</td></tr>
+<tr><td>1,000 requests/day in bursts, ≈ 30 cold starts</td><td style="text-align:right">≈ $2.75/day</td></tr>
+<tr><td>One active worker, 24/7</td><td style="text-align:right">≈ $800/month</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.4;color:#c4ccd6;border-left:4px solid #ffaa28;padding:4px 0 4px 24px">One cold start ≈ 150 s of idle. A 120 s idle timeout pays for itself whenever a second request arrives within two minutes. Default spend cap: $80/hour.</p>
+</div>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · Part 2 · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">13</p>
+<aside>Prices are list prices from runpod.io/pricing on the day of the test. The right-hand table applies them to the measured times. The idle-timeout trade-off is the one knob people under-use: 150 seconds of idle costs the same as one cold start.</aside>
+</section>

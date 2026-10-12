@@ -1,0 +1,31 @@
+<section id="packaging" data-transition="fade" style="background:#1c2530;color:#faf7f1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ffaa28">Step 3 · Packaging for vLLM</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1">Four decisions, no build step</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;flex:1">
+<div style="display:flex;flex-direction:column;gap:12px;background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:32px 36px">
+<h3 style="font-size:30px;font-weight:600;color:#ffaa28">1 · Does vLLM know the architecture?</h3>
+<p style="font-size:25px;line-height:1.4;color:#c4ccd6">Look up config.json's architectures in vLLM's supported-models list and note the first version that supports it. Gemma 4 needs vLLM ≥ 0.24; the current worker ships 0.30.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:32px 36px">
+<h3 style="font-size:30px;font-weight:600;color:#ffaa28">2 · Which worker image?</h3>
+<p style="font-size:25px;line-height:1.4;color:#c4ccd6">runpod/worker-v1-vllm = official vllm-openai image + a serverless wrapper. Every UPPERCASED env var becomes an engine flag: MAX_MODEL_LEN → --max-model-len.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:32px 36px">
+<h3 style="font-size:30px;font-weight:600;color:#ffaa28">3 · Which GPU and precision?</h3>
+<p style="font-size:25px;line-height:1.4;color:#c4ccd6">Weights + KV cache must fit. 10 GB bf16 fits a 24 GB RTX 4090 with 10.7 GB left for cache. A 9B needs FP8 to fit 24 GB; a 14B needs FP8 or 48 GB.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#121a22;border:1px solid #2a3642;border-radius:16px;padding:32px 36px">
+<h3 style="font-size:30px;font-weight:600;color:#ffaa28">4 · Do you need to bake anything?</h3>
+<p style="font-size:25px;line-height:1.4;color:#c4ccd6">Only when a system package is missing. Two-line Dockerfile FROM the worker, built by GitHub Actions to GHCR. Installing at container start blew the cold-start window (6 min).</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#2a3642;border-radius:16px;padding:28px 36px">
+<h3 style="font-size:28px;font-weight:600">Two Gemma 4 gotchas, both solved with engine flags</h3>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#e8edf2"><span style="color:#ffaa28">MODEL_LOADER_EXTRA_CONFIG</span>={"enable_weights_track": false} &nbsp;· KV-shared layers 15–34 have no k/v weights; the strict loader check must be relaxed</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#e8edf2"><span style="color:#ffaa28">MM_PROCESSOR_KWARGS</span>={"max_length": 480000, "truncation": true} &nbsp;· transformers audio processor bug; clips ≤ 30 s</p>
+</div>
+<div style="position:absolute;right:128px;top:16px;width:160px;height:104px;background:#1c2530;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="../assets/pyconafrica-logo.png" alt="PyCon Africa 2026 logo" style="width:136px;height:88px;object-fit:contain"></div>
+<p style="position:absolute;left:128px;bottom:64px;font-size:24px;color:#8a93a0">Deploying Custom LLMs with vLLM · Part 2 · PyCon Africa 2026</p>
+<p style="position:absolute;right:128px;bottom:64px;font-size:24px;color:#8a93a0">7</p>
+<aside>Packaging is four decisions rather than a build. The gotchas at the bottom are specific to Gemma 4 E-variants and were found the hard way in July; both are solved with environment variables on the template, so no custom image is needed any more.</aside>
+</section>

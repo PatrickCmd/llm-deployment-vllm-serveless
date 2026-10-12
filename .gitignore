@@ -45,3 +45,6 @@ huggingface/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Part 2 keeps its example env file
+!part2/.env.example
