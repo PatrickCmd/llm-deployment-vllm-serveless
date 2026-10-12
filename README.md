@@ -8,7 +8,7 @@ The talk has two parts:
 | Part | Where | What |
 | ---- | ----- | ---- |
 | 1 | Live, 30 minutes | What LLM serving is, why the KV cache is the bottleneck, how vLLM's PagedAttention and continuous batching fix it. Eight runnable demos. |
-| 2 | This repository, self-paced | Deploying a custom model with vLLM on serverless GPU infrastructure. In progress; watch this repo. |
+| 2 | This repository, self-paced | Deploying a custom model with vLLM on serverless GPU infrastructure: [`part2/README.md`](part2/README.md) packages `Sunbird/Sunflower-Gemma4-E2B` for vLLM, serves it from a RunPod Serverless endpoint that scales to zero, and covers cold starts, cost, monitoring and other platforms. |
 
 Every demo runs on a laptop CPU with a 135M-parameter model, so you can follow along without a GPU.
 
@@ -99,6 +99,7 @@ patches/                    vLLM CPU fallback fix for Apple Silicon builds
 logos/                      PyCon Africa 2026 and Sunbird AI logos used in the slides
 slides/                     reference decks, notes and a recorded explainer used while preparing the talk
 talk/                       the PyCon Africa 2026 deck: link to the live version plus slide source and images
+part2/                      Part 2 guide: Sunflower-Gemma4-E2B with vLLM on RunPod Serverless, deploy script and verifier
 markers/                    created at runtime; results, baselines, server PID and log (git-ignored)
 vllm_source/                created by you if you build vLLM from source (git-ignored)
 ```
